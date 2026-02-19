@@ -8,13 +8,25 @@ object JuegoNumero {
 
     println("Introduce un número:")
 
-    val intento = scala.io.StdIn.readInt()
+    var intento = scala.io.StdIn.readInt()
 
-    if (intento == numeroSecreto) println("Acertaste el número " + intento)
+    var numIntentos = 0
 
-    else println("Fallo, era: " + numeroSecreto)
+    while (intento != numeroSecreto) {
 
-    println(factorial(6))
+        numIntentos += 1
+
+        if (numeroSecreto > intento) println("El número es mayor")
+
+        else println("El número es menor")
+
+        println("Introduce otro número:")
+
+        intento = scala.io.StdIn.readInt()
+
+    }
+
+    println("Acertaste el número que era " + numeroSecreto + " tras " + numIntentos + " intentos")
 
     }
 
@@ -29,7 +41,7 @@ object JuegoNumero {
 
     def loop(intento: Int): Unit = {
 
-        
+
 
     }
 
