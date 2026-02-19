@@ -12,12 +12,7 @@ object Matrices {
 
         val filasEnParejas = A.zip(B)
         
-        val parejasDentroDeLaFila = filasEnParejas.map{ case (fa, fb) => fa.zip(fb)}
-        
-        val sumaDeclarativa = parejasDentroDeLaFila.
-        
-        
-        .map{case (a, b) => a + b} }
+        val sumaDeclarativa = filasEnParejas.map{ case (fa, fb) => fa.zip(fb).map{case (a, b) => a + b} }
 
         sumaDeclarativa.foreach{ fila => println(fila.mkString("[", ",", "]"))}
 
