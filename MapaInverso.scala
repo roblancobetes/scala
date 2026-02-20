@@ -7,10 +7,18 @@ object MapaInverso {
 
         val edades = Map("Ana"-> 25, "Jose" -> 30, "Julio" -> 25)
 
+        //Utilizo el mapa imperativo con clave: String y valor: Int
         val inverso = crearInverso(edades)
+
+        //Utilizo el mapa con tipos genéricos
+        val inversoGenerico = crearInversoGenerico(edades)
 
         println("{")
         inverso.foreach{ case (clave, valor) => println(s"$clave -> $valor")}
+        println("}")
+
+        println("Genérico: {")
+        inversoGenerico.foreach{ case (clave, valor) => println(s"$clave -> $valor")}
         println("}")
       
 
@@ -44,6 +52,22 @@ object MapaInverso {
 
             if (inverso.contains(edad)) inverso(edad).addOne(nombre)
             else inverso += (edad, ArrayBuffer(nombre))
+
+        }
+
+        inverso
+
+    }
+
+    //Función sin especificar el tipo de la clave K y el valor V
+    def crearInversoGenerico[K, V](mapa: Map[K, V]): MutableMap[V, ArrayBuffer[K]] = {
+
+        var inverso = MutableMap[V, ArrayBuffer[K]]()
+
+        for ((clave, valor) <- mapa) {
+
+            if (inverso.contains(valor)) inverso(valor).addOne(clave)
+            else inverso += (valor, ArrayBuffer(clave))
 
         }
 
