@@ -7,11 +7,13 @@ object MapaInverso {
 
         val edades = Map("Ana"-> 25, "Jose" -> 30, "Julio" -> 25)
 
+        val mapa = Map(Array(1, 2, 3)-> "Julia", Array(2,4,7) -> "Jose", Array(2, 4, 65) -> "Julio")
+
         //Utilizo el mapa imperativo con clave: String y valor: Int
         val inverso = crearInverso(edades)
 
         //Utilizo el mapa con tipos genéricos
-        val inversoGenerico = crearInversoGenerico(edades)
+        val inversoGenerico = crearInversoGenerico(mapa)
 
         println("{")
         inverso.foreach{ case (clave, valor) => println(s"$clave -> $valor")}
