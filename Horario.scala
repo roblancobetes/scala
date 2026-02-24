@@ -27,14 +27,13 @@ object Horario {
 
     println("Declarativamente sale: " + totalTurnos/totalJornadas)
 
-    val listaTurnos = tablaHorario.drop(1).flatMap(_.drop(1))
-
-    val (libresAcc, descansoDeclarativo): (Int, Boolean) = listaTurnos.foldLeft((2, true)){ 
-        case ((libresAcc, valido), hueco) => 
-            if (hueco == "turno" && libresAcc < 2) (0, false)
-            else if (hueco == "turno" && libresAcc >= 2) (0, valido)
-            else (libresAcc + 1, valido)
-     }
+    val (descansoDeclarativo, libresAcum) = tablaHorario.flatten.foldLeft((true, 2)){
+        case ((false, libres), _) => (false, libres)
+        case ((true, libres), "libre") => (true, libres + 1)
+        case ((true, libres), "turno") => 
+            if (libres < 2) (false, 25) else (true, 0)
+        case ((accValido, accLibres), _) => (accValido, accLibres)
+    }
 
     println("Declarativamente: el descanso es " + (if (descansoDeclarativo) "correcto." else "incorrecto"))
 

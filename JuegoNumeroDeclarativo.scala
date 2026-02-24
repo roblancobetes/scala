@@ -7,7 +7,6 @@ object JuegoNumeroDeclarativo {
         val numeroSecreto = Random.between(0, 101)
         jugar(numeroSecreto, 1)
 
-
     }
 
     def jugar(numeroSecreto: Int, contador: Int): Unit = {
