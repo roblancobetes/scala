@@ -15,7 +15,10 @@ object UsoCoche {
         println("Mi coche: " + miCoche.hashCode())
         println("Coche de Pepe: " + cochePepe.hashCode())
 
+        println(miCoche.toString)
+
         
+
     }
 
 }
@@ -94,6 +97,9 @@ class Coche(
 
     override def hashCode(): Int = (modelo, fechaMatriculacion, tieneAire).##
 
+    override def toString(): String = "Coche: " + modelo
+            + ", " + numKilometros + ", " + fechaMatriculacion + ", " + tieneAire
+
 }
 
 class Furgoneta(
@@ -109,6 +115,6 @@ class Furgoneta(
             tieneAire) {
 
         def getCapacidadCarga(): Int = capacidadCarga
-        def setCapacidadCarga(capacidadCarga: Int): this.capacidadCarga = capacidadCarga
+        def setCapacidadCarga(capacidadCarga: Int): Unit = this.capacidadCarga = capacidadCarga
 
 }
